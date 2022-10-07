@@ -1,12 +1,15 @@
 package Model;
 
+import java.util.LinkedList;
+
 public class ChessBoard
 {
     public static final int CHESS_BOARD_SIZE = 8;
 
     private final Square[][] chessBoard = new Square[CHESS_BOARD_SIZE][CHESS_BOARD_SIZE];
 
-    public char[][] getChessPieceSymbol() {
+    public char[][] getChessPieceSymbol()
+    {
         return chessPieceSymbol;
     }
 
@@ -21,6 +24,9 @@ public class ChessBoard
             {'R', 'N', 'B', 'K', 'Q', 'B', 'N', 'R'}
     };
 
+    private LinkedList<ChessPiece> whitePieces = new LinkedList<>();
+    private LinkedList<ChessPiece> blackPieces = new LinkedList<>();
+
     // Creates a square for every position of chess board
     public ChessBoard()
     {
@@ -32,6 +38,7 @@ public class ChessBoard
                 chessBoard[j][i] = new Square(position);
             }
         }
+//        initChessPieces();
     }
 
     @Override

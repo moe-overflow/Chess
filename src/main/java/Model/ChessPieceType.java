@@ -7,10 +7,6 @@ public enum ChessPieceType
     KNIGHT(),
     BISHOP(),
     KING(),
-    QUEEN();
+    QUEEN()
 
-    ChessPieceType()
-    {
-
-    }
 }

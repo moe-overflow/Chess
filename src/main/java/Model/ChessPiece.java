@@ -1,9 +1,7 @@
 package Model;
 
-import Model.Interfaces.Gui;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
 import static Model.ChessPieceType.*;
 
 public class ChessPiece
@@ -13,16 +11,22 @@ public class ChessPiece
     private boolean isWhite;
     private ImageView image;
 
+    private boolean firstMove = true;
+
+    private Position position;
+
     public ChessPiece(/*boolean isWhite*/)
     {
         //this.isWhite = isWhite;
     }
 
-    public ChessPieceType getType() {
+    public ChessPieceType getType()
+    {
         return type;
     }
 
-    public void setType(ChessPieceType type) {
+    public void setType(ChessPieceType type)
+    {
         this.type = type;
     }
 
@@ -48,14 +52,12 @@ public class ChessPiece
         Image image;
         StringBuilder imageUrl = new StringBuilder();
         imageUrl.append(CHESS_PIECE_URL);
-        if(this.isWhite)
-            imageUrl.append("w");
-        else imageUrl.append("b");
+        if(this.isWhite) imageUrl.append("w"); else imageUrl.append("b");
         imageUrl.append("-");
         switch (pieceSymbol) {
             case 'P' -> {
                 imageUrl.append("pawn");
-                this.type = PAWN;
+                 this.type = PAWN;
             }
             case 'R' -> {
                 imageUrl.append("rook");
@@ -87,5 +89,32 @@ public class ChessPiece
     {
         return new Image(url, Square.squareSize, Square.squareSize, true, true);
     }
+
+    public Position getPosition()
+    {
+        return position;
+    }
+
+    public void setPosition(Position position)
+    {
+        this.position = position;
+    }
+
+    public boolean isFirstMove()
+    {
+        return firstMove;
+    }
+
+    public void setFirstMove(boolean firstMoveOfPawn)
+    {
+        this.firstMove = firstMoveOfPawn;
+    }
+
+    @Override
+    public String toString()
+    {
+        return isWhite ? "WHITE " + getType() : "BLACK " + getType() ;
+    }
+
 
 }

@@ -23,8 +23,16 @@ public class Square
         this.hasChessPiece = hasChessPiece;
     }
 
-    public ChessPiece getChessPiece() {return chessPiece;}
-    public void setChessPiece(ChessPiece chessPiece) {this.chessPiece = chessPiece;}
+    public ChessPiece getChessPiece()
+    {
+        return chessPiece;
+    }
+
+
+    public void setChessPiece(ChessPiece chessPiece)
+    {
+        this.chessPiece = chessPiece;
+    }
 
     public Square(Position position)
     {
@@ -40,13 +48,6 @@ public class Square
         else image = createImage(Gui.BLACK_TILE_URL);
         return new ImageView(image);
     }
-
-//    public static ImageView highlightSquare()
-//    {
-//        Image image = new Image(Gui.SELECTED_TILE_URL, squareSize, squareSize, true, true);
-//        ImageView imageView = new ImageView(image);
-//        return imageView;
-//    }
 
     public boolean isWhiteSquare()
     {
@@ -93,8 +94,4 @@ public class Square
         this.background = imageView;
     }
 
-    public ImageView getBackgroundImage()
-    {
-        return this.background;
-    }
 }
