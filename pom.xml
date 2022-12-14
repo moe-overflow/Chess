@@ -107,6 +107,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+<!--    <dependency>-->
+<!--        <groupId>org.openjfx</groupId>-->
+<!--        <artifactId>javafx-media</artifactId>-->
+<!--        <version>16</version>-->
+<!--    </dependency>-->
 
     <build>
         <plugins>
@@ -128,7 +133,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.chess/Control.Main</mainClass>
+                            <mainClass>com.example.chess/control.Main</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
