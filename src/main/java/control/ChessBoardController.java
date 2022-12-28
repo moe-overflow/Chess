@@ -141,31 +141,41 @@ public class ChessBoardController
 
     }
 
+//    protected boolean hasFriendlyPiece(Position position)
+//    {
+//        boolean whitePiece = getChessBoard().getSquare(position).getChessPiece().isWhite();
+//        System.out.println(whitePiece + " white!!!   " + position + " asdasdasdasdsadd" );
+//        return (whitesTurn && whitePiece) || (!whitesTurn && !whitePiece);
+//    }
+
     protected void switchTurn()
     {
         whitesTurn ^= true;
         BottomView.editTurnLabel(whitesTurn);
     }
 
-//    public void highlightMovingWays(Square oldSquare)
-//    {
-//        for(int i = 0; i < 8; i++)
-//        {
-//            for(int j = 0; j < 8; j++)
-//            {
-//                Position position = new Position(j, i);
-//                Square possibleSquare = getChessBoard().getSquare(position);
-//                MovementController.getInstance().setValues(oldSquare, possibleSquare);
-//                if(MovementController.getInstance().checkCanMove())
-//                {
-//                    possibleSquare.setBackgroundImage(highlightedSquare);
-//                    System.out.println("fusdfias");
-//                }
-//            }
-//        }
-//     }
+    public void highlightPaths(Position position)
+    {
+        ChessPiece actingChessPiece = getChessBoard().getSquare(position).getChessPiece();
+        Square oldSquare = getChessBoard().getSquare(position);
+        for(int i = 0; i < ChessBoard.CHESS_BOARD_SIZE; i++)
+        {
+            for(int j = 0; j < ChessBoard.CHESS_BOARD_SIZE; j++)
+            {
+                Square newSquare = getChessBoard().getSquare(new Position(j, i));
+                MovementController.getInstance().setValues(oldSquare, newSquare);
+                if(MovementController.getInstance().checkCanMove())
+                {
+                    System.out.println("can move: X: " + newSquare.getPosition().getY() + " Y: " + newSquare.getPosition().getX() +
+                            " " + actingChessPiece);
+                    System.out.println(newSquare.getChessPiece() + " (Chess piece on new square!)");
+//                    chessBoardGridPane.add(highlightedSquare, position.getX(), position.getY());
+                }
+            }
+        }
+    }
 
-    private boolean isOwnersPiece(ChessPiece chessPiece)
+    protected boolean isOwnersPiece(ChessPiece chessPiece)
     {
         return whitesTurn == chessPiece.isWhite();
     }
@@ -182,7 +192,7 @@ public class ChessBoardController
             selectedSquare = chessBoard.getSquare(p);
             System.out.println("[SELECTED: " + clickedSquare.getChessPiece().getType() + " ON POSITION:" + p + " ]");
 
-//            highlightMovingWays(clickedSquare);
+//            highlightPaths(p);
         }
         System.out.println("-------------------------------------------------");
     }

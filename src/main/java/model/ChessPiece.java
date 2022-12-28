@@ -1,17 +1,12 @@
 package model;
 
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import static model.ChessPieceType.*;
 
 public class ChessPiece
 {
     private ChessPieceType type;
     private boolean isWhite;
     private ImageView image;
-
-    private boolean firstMove = true;
-
     private Position position;
 
     public ChessPiece(/*boolean isWhite*/)
@@ -56,15 +51,6 @@ public class ChessPiece
         this.position = position;
     }
 
-    public boolean isFirstMove()
-    {
-        return firstMove;
-    }
-
-    public void setFirstMove(boolean firstMoveOfPawn)
-    {
-        this.firstMove = firstMoveOfPawn;
-    }
 
     @Override
     public String toString()
