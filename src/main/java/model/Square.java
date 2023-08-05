@@ -3,6 +3,8 @@ package model;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
+import static utilities.Utilities.isEvenNum;
+
 public class Square
 {
     public static final int squareSize = 80;
@@ -11,6 +13,9 @@ public class Square
     private ImageView background;
     private ChessPiece chessPiece = null;
     private boolean hasChessPiece = false;
+
+    // todo: variable to prevent movement if checkmate
+    private boolean isAttacked;
 
     public boolean getHasChessPiece()
     {
@@ -53,10 +58,7 @@ public class Square
         return(!isEvenNum(i) && isEvenNum(j) || isEvenNum(i) && !isEvenNum(j) );
     }
 
-    private static boolean isEvenNum(int x)
-    {
-        return (x%2==0);
-    }
+
 
     public void setWhite(boolean white)
     {

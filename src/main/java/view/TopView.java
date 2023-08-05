@@ -5,8 +5,8 @@ import javafx.application.Platform;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 
-import static model.GuiConstants.*;
-import static model.GuiConstants.CREDITS_MENUITEM;
+import static control.GuiConstants.*;
+import static control.GuiConstants.CREDITS_MENUITEM;
 
 public class TopView
 {

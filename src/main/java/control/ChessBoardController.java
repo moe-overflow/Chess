@@ -8,6 +8,9 @@ import javafx.scene.layout.GridPane;
 import view.BottomView;
 import view.SquareView;
 
+import static view.Logger.*;
+
+//static final int CHESSBOARD_WIDTH
 public class ChessBoardController
 {
     private final GridPane chessBoardGridPane = new GridPane();
@@ -15,7 +18,7 @@ public class ChessBoardController
     private Boolean whitesTurn = true;
     private final ChessBoard chessBoard = new ChessBoard();
     private final static ImageView highlightedSquare = new
-            ImageView(SquareView.createImage("file:./src/main/java/Resources/Pics/selected.png"));
+            ImageView(SquareView.createImage("file:./src/main/java/utilities/assets/Pics/selected.png"));
 
     private static Square selectedSquare = null;
 
@@ -42,9 +45,9 @@ public class ChessBoardController
         setChessBoard();
         setChessPieces();
         chessBoardGridPane.setAlignment(Pos.CENTER);
-        Main.getInstance().setCenterNode(chessBoardGridPane);
-        chessBoardGridPane.setMaxHeight(600);
-        chessBoardGridPane.setMaxWidth(600);
+        //Main.getInstance().setCenterNode(chessBoardGridPane); todo xy
+        //chessBoardGridPane.setMaxHeight(600);
+        //chessBoardGridPane.setMaxWidth(600);
 
     }
 
@@ -134,7 +137,7 @@ public class ChessBoardController
         catch (NullPointerException ex)
         {
             ex.getStackTrace();
-            System.out.println("CLICK OUTSIDE CHESS BOARD!");
+            logError("CLICK OUTSIDE CHESS BOARD!");
         }
 
         });
@@ -144,7 +147,7 @@ public class ChessBoardController
 //    protected boolean hasFriendlyPiece(Position position)
 //    {
 //        boolean whitePiece = getChessBoard().getSquare(position).getChessPiece().isWhite();
-//        System.out.println(whitePiece + " white!!!   " + position + " asdasdasdasdsadd" );
+//        System.out.println(whitePiece + " white!!!   " + position + "  " );
 //        return (whitesTurn && whitePiece) || (!whitesTurn && !whitePiece);
 //    }
 
@@ -190,11 +193,11 @@ public class ChessBoardController
             chessBoardGridPane.add(highlightedSquare, p.getX(), p.getY());
             chessBoardGridPane.add(clickedSquare.getChessPiece().getImage(), p.getX(), p.getY());
             selectedSquare = chessBoard.getSquare(p);
-            System.out.println("[SELECTED: " + clickedSquare.getChessPiece().getType() + " ON POSITION:" + p + " ]");
+            logSelectedSquare(clickedSquare, p);
 
 //            highlightPaths(p);
         }
-        System.out.println("-------------------------------------------------");
+        logLine();
     }
 
     protected void deselectSquare()
@@ -206,6 +209,11 @@ public class ChessBoardController
     protected boolean squareSelected()
     {
         return selectedSquare != null;
+    }
+
+    public GridPane getChessBoardGridpane()
+    {
+        return chessBoardGridPane;
     }
 
     private static class ChessBoardHolder

@@ -1,10 +1,15 @@
 package view;
 
+import control.ChessBoardController;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import model.ChessBoard;
 import model.ChessPiece;
-import model.ChessPieceType;
-import model.GuiConstants;
+import control.GuiConstants;
 import model.Square;
 
 import static model.ChessPieceType.*;
@@ -64,4 +69,45 @@ public class SquareView
         image = createImage(imageUrl.toString());
         return new ImageView(image);
     }
+
+    public static HBox createLettersView()
+    {
+        HBox letterBox = new HBox();
+
+        String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H"};
+
+
+        for(String letter : letters)
+        {
+            Label label = new Label(letter);
+            setLabelProperties(label);
+            letterBox.getChildren().add(label);
+        }
+        letterBox.setAlignment(Pos.CENTER);
+        return letterBox;
+    }
+
+    public static VBox createNumbersView()
+    {
+        VBox numbersBox = new VBox();
+
+        Integer[] numbers = {1, 2, 3, 4, 5, 6, 7, 8};
+        for(Integer number : numbers)
+        {
+            Label label = new Label(number.toString());
+            setLabelProperties(label);
+            numbersBox.getChildren().add(label);
+        }
+        numbersBox.setAlignment(Pos.CENTER);
+        return numbersBox;
+    }
+
+    private static void setLabelProperties(Label label)
+    {
+        label.setMinWidth(80); // todo: determine value automatically
+        label.setMinHeight(80); // todo: determine value automatically
+        label.setId("label");
+        label.setAlignment(Pos.CENTER);
+    }
+
 }

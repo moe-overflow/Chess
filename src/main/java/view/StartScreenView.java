@@ -8,9 +8,9 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import model.GuiConstants;
+import control.GuiConstants;
 
-import static model.GuiConstants.*;
+import static control.GuiConstants.*;
 
 public class StartScreenView
 {

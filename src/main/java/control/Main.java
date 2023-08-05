@@ -1,23 +1,22 @@
 package control;
 
+import javafx.geometry.Pos;
 import javafx.scene.image.Image;
-import model.GuiConstants;
+import javafx.scene.layout.*;
 import view.*;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
-import static model.GuiConstants.*;
+import static control.GuiConstants.*;
 
 public class Main extends Application
 {
 
-    private static final String CSS_FILE_PATH = "file:./src/main/java/Resources/stylesheet.css";
+    private static final String CSS_FILE_PATH = "file:./src/main/java/utilities/stylesheet.css";
     private static final BorderPane borderPane = new BorderPane();
     private static final StackPane startScreen = new StackPane();
 
@@ -56,6 +55,7 @@ public class Main extends Application
         borderPane.setBottom(BottomView.createBottomView(true));
         borderPane.setRight(SidesView.createDeadPiecesView(true));
         borderPane.setLeft(SidesView.createDeadPiecesView(false));
+        borderPane.setCenter(renderCompleteChessBoard());
     }
 
     public static void updateDeadChessPieces()
@@ -84,11 +84,34 @@ public class Main extends Application
         borderPane.setCenter(node);
     }
 
-    private static class MainHolder { private static final Main INSTANCE = new Main();}
+    private static class MainHolder
+    {
+        private static final Main INSTANCE = new Main();
+    }
 
     public static Main getInstance()
     {
         return Main.MainHolder.INSTANCE;
     }
 
+    public GridPane renderCompleteChessBoard()
+    {
+        // chess board
+        GridPane chessBoard = ChessBoardController.getInstance().getChessBoardGridpane();
+
+        // letters box
+        HBox lettersBox = SquareView.createLettersView();
+
+        // numbers box
+        VBox numbersBox = SquareView.createNumbersView();
+
+        GridPane completeChessBoard = new GridPane();
+
+        completeChessBoard.add(chessBoard, 1 , 0);
+        completeChessBoard.add(lettersBox, 1 , 1);
+        completeChessBoard.add(numbersBox, 0 , 0);
+        completeChessBoard.setAlignment(Pos.CENTER);
+
+        return completeChessBoard;
+    }
 }

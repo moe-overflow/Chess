@@ -58,3 +58,11 @@ BorderPane
     -fx-border-insets: 10;
     -fx-border-radius: 10;
 }
+
+#label
+{
+    -fx-alignment: center;
+    -fx-font-style: italic ;
+    -fx-font-size: 20;
+    -fx-padding: 10;
+}

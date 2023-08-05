@@ -3,20 +3,16 @@ package control;
 import model.*;
 import javafx.scene.layout.GridPane;
 import view.SquareView;
-
 import java.util.LinkedList;
+
+import static view.Logger.*;
 
 public class MovementController
 {
     private final LinkedList<ChessPiece> deadWhitePieces = new LinkedList<>();
     private final LinkedList<ChessPiece> deadBlackPieces = new LinkedList<>();
 
-    private int newX;
-    private int oldX;
-    private int newY;
-    private int oldY;
-    private int spaceX;
-    private int spaceY;
+   private int newX, oldX, newY, oldY, spaceX, spaceY;
 
     private ChessPiece actingChessPiece = null;
     private Position newPosition = null;
@@ -61,8 +57,7 @@ public class MovementController
                 else
                     addDeadBlackPiece(pieceToKill);
 
-                System.out.println("[DEAD BLACK PIECES: " + deadBlackPieces.toArray().length + "]");
-                System.out.println("[DEAD WHITE PIECES: " + deadWhitePieces.toArray().length + "]");
+                logDeadPieces();
 
                 Main.updateDeadChessPieces(); // TODO move to ChessBoardController
             }
@@ -82,15 +77,11 @@ public class MovementController
             newSquare.setChessPiece(actingChessPiece);
 
             ChessBoardController.getInstance().switchTurn();
-
-            System.out.println("[TYPE: " + actingChessPiece.getType() + " ]");
-            System.out.println("[MOVING FROM: (" + oldX + ", " + oldY + ") ]");
-            System.out.println("[MOVING TO  : (" + newX + ", " + newY + ") ]");
-
+            logMove(actingChessPiece.getType());
         }
         else
         {
-            System.out.println("CAN'T MOVE THERE!");
+            logError("CAN'T MOVE THERE!");
         }
     }
 
@@ -279,16 +270,29 @@ public class MovementController
         return false;
     }
 
-    public enum Directions
+    public enum Directions {
+        NORTH, EAST, SOUTH, WEST,
+        NORTH_EAST, NORTH_WEST, SOUTH_EAST, SOUTH_WEST
+    }
+
+    public int getNewX()
     {
-        NORTH,
-        EAST,
-        SOUTH,
-        WEST,
-        NORTH_EAST,
-        NORTH_WEST,
-        SOUTH_EAST,
-        SOUTH_WEST
+        return newX;
+    }
+
+    public int getOldX()
+    {
+        return oldX;
+    }
+
+    public int getNewY()
+    {
+        return newY;
+    }
+
+    public int getOldY()
+    {
+        return oldY;
     }
 
     private static class MovementHolder
