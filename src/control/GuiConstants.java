@@ -5,13 +5,13 @@ import javafx.scene.image.ImageView;
 
 public interface GuiConstants
 {
-    // window (stage)
+    // window (stage) 1200 800
     int WINDOW_WIDTH = 1200;
-    int WINDOW_HEIGHT = 800;
+    int WINDOW_HEIGHT = 1000;
 
 
     // Start screen wallpaper
-    String WP_URL = "file:./src/main/java/utilities/assets/Pics/WP2.png";
+    String WP_URL = "file:./src/utilities/assets/Pics/WP2.png";
     Image WP_IMAGE = new Image(WP_URL, WINDOW_WIDTH, WINDOW_HEIGHT, true, true);
     ImageView WP_IMAGE_VIEW = new ImageView(WP_IMAGE);
 
@@ -36,10 +36,10 @@ public interface GuiConstants
 
 
     // images of pieces
-    String CHESS_PIECE_URL = "file:./src/main/java/utilities/assets/Pics/" ;
-    String BLACK_KNIGHT_URL = "file:./src/main/java/utilities/assets/Pics/b-knight.png";
-    String WHITE_TILE_URL = "file:./src/main/java/utilities/assets/Pics/white.png";
-    String BLACK_TILE_URL = "file:./src/main/java/utilities/assets/Pics/black.png";
+    String CHESS_PIECE_URL = "file:./src/utilities/assets/Pics/" ;
+    String BLACK_KNIGHT_URL = "file:./src/utilities/assets/Pics/b-knight.png";
+    String WHITE_TILE_URL = "file:./src/utilities/assets/Pics/white.png";
+    String BLACK_TILE_URL = "file:./src/utilities/assets/Pics/black.png";
 
 
 }

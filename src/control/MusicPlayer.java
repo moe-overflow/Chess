@@ -9,7 +9,7 @@ import java.io.File;
 public class MusicPlayer extends Thread
 {
     private static final String MUSIC_FILE =
-    "C:\\Dev\\Java\\various projects\\Chess\\src\\main\\java\\resources\\KarpovNotKasparov-DeepFritz.mp3";
+    "C:\\Dev\\Java\\various projects\\Chess\\src\\resources\\KarpovNotKasparov-DeepFritz.mp3";
 
     //    private static final String MUSIC_FILE =
     //        "C:\\Coding\\Java\\various projects\\Chess\\src\\main\\java\\resources\\preview.mp3";

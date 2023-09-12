@@ -12,7 +12,7 @@ public class MovementController
     private final LinkedList<ChessPiece> deadWhitePieces = new LinkedList<>();
     private final LinkedList<ChessPiece> deadBlackPieces = new LinkedList<>();
 
-   private int newX, oldX, newY, oldY, spaceX, spaceY;
+    private int newX, oldX, newY, oldY, spaceX, spaceY;
 
     private ChessPiece actingChessPiece = null;
     private Position newPosition = null;
@@ -37,11 +37,18 @@ public class MovementController
         return deadBlackPieces;
     }
 
+    private boolean areSamePlayers(Square oldSquare, Square newSquare)
+    {
+        return oldSquare.getChessPiece().isWhite() == newSquare.getChessPiece().isWhite();
+    }
+
     public void move(Square oldSquare, Square newSquare)
     {
+        boolean samePlayers = newSquare.getHasChessPiece() ? areSamePlayers(oldSquare, newSquare) : false;
+
         GridPane gridPane = ChessBoardController.getInstance().getChessBoardGridPane();
         setValues(oldSquare, newSquare);
-        if(checkCanMove())
+        if(checkCanMove() && !samePlayers)
         {
             gridPane.getChildren().remove(actingChessPiece.getImage());
 

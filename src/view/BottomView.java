@@ -9,8 +9,8 @@ import javafx.scene.layout.HBox;
 
 public class BottomView
 {
-    private static final String WHITE_KING_URL = "file:./src/main/java/Resources/Pics/w-king.png";
-    private static final String BLACK_KING_URL = "file:./src/main/java/Resources/Pics/b-king.png";
+    private static final String WHITE_KING_URL = "file:./src/main/java/utilities/assets/Pics/w-king.png";
+    private static final String BLACK_KING_URL = "file:./src/main/java/utilities/assets/Pics/b-king.png";
     private static final int FIT = 50;
 
 

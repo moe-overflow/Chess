@@ -2,6 +2,7 @@ package view;
 
 
 import control.MovementController;
+import javafx.scene.Node;
 import model.ChessPiece;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -58,4 +59,22 @@ public class SidesView
 
         return flowPane;
     }
+
+    public static Node[] createChessboardEdges()
+    {
+        Node[] nodes;
+
+        VBox leftEdge = new VBox();
+        VBox rightEdge = new VBox();
+        HBox topEdge = new HBox();
+        HBox bottomEdge = new HBox();
+
+        nodes = new Node[]{leftEdge, rightEdge, topEdge, bottomEdge};
+        for (Node node : nodes)
+            node.setId("edge");
+
+        return nodes;
+    }
+
+
 }

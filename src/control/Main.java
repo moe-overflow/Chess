@@ -12,11 +12,12 @@ import javafx.stage.Stage;
 
 
 import static control.GuiConstants.*;
+import static view.SidesView.createChessboardEdges;
 
 public class Main extends Application
 {
 
-    private static final String CSS_FILE_PATH = "file:./src/main/java/utilities/stylesheet.css";
+    private static final String CSS_FILE_PATH = "file:./src/utilities/stylesheet.css";
     private static final BorderPane borderPane = new BorderPane();
     private static final StackPane startScreen = new StackPane();
 
@@ -97,7 +98,7 @@ public class Main extends Application
     public GridPane renderCompleteChessBoard()
     {
         // chess board
-        GridPane chessBoard = ChessBoardController.getInstance().getChessBoardGridpane();
+        GridPane chessBoard = ChessBoardController.getInstance().getChessBoardGridPane();
 
         // letters box
         HBox lettersBox = SquareView.createLettersView();
@@ -105,11 +106,18 @@ public class Main extends Application
         // numbers box
         VBox numbersBox = SquareView.createNumbersView();
 
+        // edges
+        Node[] edges = createChessboardEdges();
+
         GridPane completeChessBoard = new GridPane();
 
-        completeChessBoard.add(chessBoard, 1 , 0);
-        completeChessBoard.add(lettersBox, 1 , 1);
-        completeChessBoard.add(numbersBox, 0 , 0);
+        completeChessBoard.add(chessBoard, 2 , 1);
+        completeChessBoard.add(edges[2], 2 , 0);  // top edge
+        completeChessBoard.add(edges[3], 2 , 2);  // bottom edge
+        completeChessBoard.add(edges[0], 1 , 1);  // left edge
+        completeChessBoard.add(edges[1], 3 , 1);  // right edge
+        completeChessBoard.add(lettersBox, 2 , 3);
+        completeChessBoard.add(numbersBox, 0 , 1);
         completeChessBoard.setAlignment(Pos.CENTER);
 
         return completeChessBoard;

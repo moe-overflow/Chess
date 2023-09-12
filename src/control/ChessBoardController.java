@@ -18,7 +18,7 @@ public class ChessBoardController
     private Boolean whitesTurn = true;
     private final ChessBoard chessBoard = new ChessBoard();
     private final static ImageView highlightedSquare = new
-            ImageView(SquareView.createImage("file:./src/main/java/utilities/assets/Pics/selected.png"));
+            ImageView(SquareView.createImage("file:./src/utilities/assets/Pics/selected.png"));
 
     private static Square selectedSquare = null;
 
@@ -115,6 +115,37 @@ public class ChessBoardController
             ChessPiece clickedPiece = clickedSquare.getChessPiece();
             boolean emptySquare = !clickedSquare.getHasChessPiece();
 
+            //boolean whiteIsPlaying = isOwnersPiece(clickedPiece);
+            //boolean selectedPieceIsWhite = clickedPiece.isWhite();
+
+            if(squareSelected())
+            {
+                if(friendlyPieceSelected()) // whites turn and white selected or blacks turn and black selected
+                {
+                    if(isOwnersPiece(clickedPiece))
+                    {
+                        deselectSquare();
+                        selectSquare(clickedPosition);
+                    }
+                    else if(emptySquare || !isOwnersPiece(clickedPiece))
+                    {
+                        MovementController.getInstance().move(getSelectedSquare(), clickedSquare);
+                        deselectSquare();
+                    }
+                }
+                else // whites turn and black selected or blacks turn and white selected
+                {
+                    deselectSquare();
+                    if(clickedSquare.getHasChessPiece()) selectSquare(clickedPosition);
+                }
+            }
+            else
+            {
+                if(clickedSquare.getHasChessPiece()) selectSquare(clickedPosition);
+            }
+
+
+            /*
             if(!squareSelected() && !emptySquare && isOwnersPiece(clickedPiece))
             {
                 selectSquare(clickedPosition);
@@ -133,10 +164,12 @@ public class ChessBoardController
                     deselectSquare();
                 }
             }
+            */
         }
         catch (NullPointerException ex)
         {
             ex.getStackTrace();
+            System.out.println(ex.getMessage());
             logError("CLICK OUTSIDE CHESS BOARD!");
         }
 
@@ -183,6 +216,10 @@ public class ChessBoardController
         return whitesTurn == chessPiece.isWhite();
     }
 
+    protected boolean friendlyPieceSelected()
+    {
+        return (whitesTurn == selectedSquare.getWhite() ||  !whitesTurn == !selectedSquare.getWhite());
+    }
 
     protected void selectSquare(Position p)
     {
@@ -209,11 +246,6 @@ public class ChessBoardController
     protected boolean squareSelected()
     {
         return selectedSquare != null;
-    }
-
-    public GridPane getChessBoardGridpane()
-    {
-        return chessBoardGridPane;
     }
 
     private static class ChessBoardHolder

@@ -63,6 +63,12 @@ BorderPane
 {
     -fx-alignment: center;
     -fx-font-style: italic ;
-    -fx-font-size: 20;
-    -fx-padding: 10;
+    -fx-font-size: 16;
+    -fx-padding: 5;
+}
+
+#edge
+{
+    -fx-background-color: #3EA171;
+    -fx-padding: 5;
 }
