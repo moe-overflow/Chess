@@ -2,7 +2,7 @@ package model;
 
 import javafx.scene.image.ImageView;
 
-public class ChessPiece
+public final class ChessPiece
 {
     private ChessPieceType type;
     private boolean isWhite;
@@ -59,4 +59,14 @@ public class ChessPiece
     }
 
 
+    public enum ChessPieceType
+    {
+        PAWN(),
+        ROOK(),
+        KNIGHT(),
+        BISHOP(),
+        KING(),
+        QUEEN()
+
+    }
 }

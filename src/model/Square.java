@@ -5,9 +5,9 @@ import javafx.scene.image.ImageView;
 
 import static utilities.Utilities.isEvenNum;
 
-public class Square
+public final class Square
 {
-    public static final int squareSize = 80;
+    public static final int squareSize = 100;
     private boolean isWhite;
     private final Position position;
     private ImageView background;

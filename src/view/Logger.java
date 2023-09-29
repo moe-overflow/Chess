@@ -2,7 +2,6 @@ package view;
 
 import control.MovementController;
 import model.ChessPiece;
-import model.ChessPieceType;
 import model.Position;
 import model.Square;
 
@@ -27,7 +26,7 @@ public class Logger
                  "]" + ANSI_RESET);
     }
 
-    public static void logMove(ChessPieceType actingChessPieceType)
+    public static void logMove(ChessPiece.ChessPieceType actingChessPieceType)
     {
         MovementController instance = MovementController.getInstance();
         System.out.println(ANSI_GREEN + "[TYPE: " + actingChessPieceType + " ]" + ANSI_RESET);

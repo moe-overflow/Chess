@@ -6,12 +6,12 @@ import javafx.scene.image.ImageView;
 public interface GuiConstants
 {
     // window (stage) 1200 800
-    int WINDOW_WIDTH = 1200;
-    int WINDOW_HEIGHT = 1000;
+    int WINDOW_WIDTH = 1920;
+    int WINDOW_HEIGHT = 1080;
 
 
     // Start screen wallpaper
-    String WP_URL = "file:./src/utilities/assets/Pics/WP2.png";
+    String WP_URL = "file:./src/utilities/assets/Pics/WP5.png";
     Image WP_IMAGE = new Image(WP_URL, WINDOW_WIDTH, WINDOW_HEIGHT, true, true);
     ImageView WP_IMAGE_VIEW = new ImageView(WP_IMAGE);
 

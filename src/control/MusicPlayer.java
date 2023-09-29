@@ -8,11 +8,7 @@ import java.io.File;
 
 public class MusicPlayer extends Thread
 {
-    private static final String MUSIC_FILE =
-    "C:\\Dev\\Java\\various projects\\Chess\\src\\resources\\KarpovNotKasparov-DeepFritz.mp3";
-
-    //    private static final String MUSIC_FILE =
-    //        "C:\\Coding\\Java\\various projects\\Chess\\src\\main\\java\\resources\\preview.mp3";
+    private static final String MUSIC_FILE = "file:./src/utility/assets/KarpovNotKasparov-DeepFritz.mp3";
 
     @Override
     public void run()

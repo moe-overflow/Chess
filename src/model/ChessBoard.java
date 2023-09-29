@@ -2,7 +2,7 @@ package model;
 
 import java.util.LinkedList;
 
-public class ChessBoard
+public final class ChessBoard
 {
     public static final int CHESS_BOARD_SIZE = 8;
 
@@ -13,7 +13,8 @@ public class ChessBoard
         return chessPieceSymbol;
     }
 
-    private final char[][] chessPieceSymbol = {
+    private final char[][] chessPieceSymbol =
+    {
             {'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
             {'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
             {'-', '-', '-', '-', '-', '-', '-', '-'},
@@ -21,7 +22,7 @@ public class ChessBoard
             {'-', '-', '-', '-', '-', '-', '-', '-'},
             {'-', '-', '-', '-', '-', '-', '-', '-'},
             {'P', 'P', 'P', 'P', 'P', 'P', 'P', 'P'},
-            {'R', 'N', 'B', 'K', 'Q', 'B', 'N', 'R'}
+            {'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'}
     };
 
     private final LinkedList<ChessPiece> whitePieces = new LinkedList<>();

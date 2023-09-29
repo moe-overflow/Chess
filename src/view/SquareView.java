@@ -1,19 +1,19 @@
 package view;
 
-import control.ChessBoardController;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.ChessBoard;
 import model.ChessPiece;
 import control.GuiConstants;
 import model.Square;
 
-import static model.ChessPieceType.*;
-import static model.ChessPieceType.KING;
+import java.util.stream.IntStream;
+
+import static model.ChessPiece.ChessPieceType.*;
+import static model.ChessPiece.ChessPieceType.KING;
 
 public class SquareView
 {
@@ -91,7 +91,7 @@ public class SquareView
     {
         VBox numbersBox = new VBox();
 
-        Integer[] numbers = {1, 2, 3, 4, 5, 6, 7, 8};
+        Integer[] numbers = {8, 7, 6, 5, 4, 3, 2, 1};
         for(Integer number : numbers)
         {
             Label label = new Label(number.toString());
@@ -104,8 +104,8 @@ public class SquareView
 
     private static void setLabelProperties(Label label)
     {
-        label.setMinWidth(80); // todo: determine value automatically
-        label.setMinHeight(80); // todo: determine value automatically
+        label.setMinWidth(Square.squareSize);
+        label.setMinHeight(Square.squareSize);
         label.setId("label");
         label.setAlignment(Pos.CENTER);
     }
